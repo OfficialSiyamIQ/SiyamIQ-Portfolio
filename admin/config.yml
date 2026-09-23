@@ -1,0 +1,81 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://your-site-name.netlify.app
+
+collections:
+  - name: "services"
+    label: "Services"
+    files:
+      - file: "content/services.json"
+        label: "Service Categories"
+        name: "services"
+        fields:
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Category key (no spaces, e.g. graphic-design)", name: "key", widget: "string"}
+              - {label: "Category name", name: "name", widget: "string"}
+              - {label: "Short blurb", name: "blurb", widget: "string"}
+              - label: "Services in this category"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - {label: "Service name", name: "name", widget: "string"}
+                  - {label: "Slug (no spaces, e.g. photo-editing)", name: "slug", widget: "string", required: false, hint: "Leave blank to auto-generate from the name"}
+                  - {label: "Short one-line description (shown on cards)", name: "short", widget: "string"}
+                  - {label: "Full description", name: "desc", widget: "text"}
+                  - {label: "What is included (one line per item)", name: "includes", widget: "text"}
+                  - {label: "Who it is for", name: "goodFor", widget: "string"}
+                  - label: "Related portfolio category"
+                    name: "portfolio"
+                    widget: "select"
+                    options: ["graphic-design", "thumbnail", "photo-editing", "video-editing", "gaming"]
+
+  - name: "projects"
+    label: "Portfolio Projects"
+    files:
+      - file: "content/projects.json"
+        label: "Projects"
+        name: "projects"
+        fields:
+          - label: "Projects"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["graphic-design", "thumbnail", "photo-editing", "video-editing", "gaming"]
+              - {label: "Personal / self-initiated project?", name: "personal", widget: "boolean", default: false}
+              - {label: "Image", name: "image", widget: "image", required: false}
+              - {label: "Project overview", name: "overview", widget: "text", required: false}
+              - {label: "Creative / editing approach", name: "approach", widget: "text", required: false}
+              - {label: "Tools used", name: "tools", widget: "string", required: false}
+              - {label: "Before image", name: "before", widget: "image", required: false}
+              - {label: "After image", name: "after", widget: "image", required: false}
+
+  - name: "reviews"
+    label: "Client Reviews"
+    files:
+      - file: "content/reviews.json"
+        label: "Reviews"
+        name: "reviews"
+        fields:
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Client name", name: "name", widget: "string"}
+              - {label: "Review text", name: "text", widget: "text"}
+              - {label: "Source (e.g. Fiverr, WhatsApp)", name: "source", widget: "string", required: false}
