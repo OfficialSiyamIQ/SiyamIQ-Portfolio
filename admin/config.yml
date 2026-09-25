@@ -5,7 +5,7 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://your-site-name.netlify.app
+site_url: https://sensational-palmier-96344d.netlify.app
 
 collections:
   - name: "services"
@@ -57,6 +57,7 @@ collections:
                 widget: "select"
                 options: ["graphic-design", "thumbnail", "photo-editing", "video-editing", "gaming"]
               - {label: "Personal / self-initiated project?", name: "personal", widget: "boolean", default: false}
+              - {label: "Price (e.g. ৳500 or $10)", name: "price", widget: "string", required: false}
               - {label: "Image", name: "image", widget: "image", required: false}
               - {label: "Project overview", name: "overview", widget: "text", required: false}
               - {label: "Creative / editing approach", name: "approach", widget: "text", required: false}
@@ -77,5 +78,7 @@ collections:
             summary: "{{fields.name}}"
             fields:
               - {label: "Client name", name: "name", widget: "string"}
+              - {label: "Company / brand (optional)", name: "company", widget: "string", required: false}
+              - {label: "Role / designation (optional)", name: "role", widget: "string", required: false}
               - {label: "Review text", name: "text", widget: "text"}
               - {label: "Source (e.g. Fiverr, WhatsApp)", name: "source", widget: "string", required: false}
